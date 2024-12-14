@@ -1,0 +1,119 @@
+{
+    "personal_info": {
+        "name": "Cris Chen",
+        "age": "22",
+        "gender": "男",
+        "phone_number": "1234567890",
+        "email": "cris@connect.hku.hk",
+        "address": "香港",
+        "linkedin": "https://www.linkedin.com/in/cris",
+        "github": "https://github.com/cris"
+    },
+    "education_info": [
+        {
+            "school": "麻省理工学院",
+            "major": "计算机科学",
+            "degree": "学士学位",
+            "gpa": "4.0",
+            "education_time": "2020年至2024年",
+            "courses": [
+                "算法",
+                "数据结构",
+                "操作系统"
+            ],
+            "awards": [
+                "院长名单"
+            ]
+        },
+        {
+            "school": "香港大学",
+            "major": "计算机科学",
+            "degree": "硕士",
+            "gpa": 3.9,
+            "education_time": "2024年至2026年",
+            "courses": [
+                "机器学习",
+                "机器人学",
+                "自然语言处理"
+            ],
+            "awards": [
+                "最佳论文奖"
+            ]
+        }
+    ],
+    "work_experience": [
+        {
+            "company": "谷歌",
+            "title": "软件开发工程师实习生",
+            "location": "旧金山",
+            "time": "2023年至2024年",
+            "details": [
+                "致力于使用Python和JavaScript开发web应用程序。"
+            ]
+        },
+        {
+            "company": "腾讯",
+            "title": "软件开发工程师实习生",
+            "location": "深圳",
+            "time": "2024年至2025年",
+            "details": [
+                "带领团队使用AWS和Docker开发基于云的解决方案。"
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "name": "健康追踪",
+            "role": "首席开发人员",
+            "time": "2019年至2020年",
+            "details": [
+                "该应用程序帮助用户监控他们的健康指标，并提供健身建议。"
+            ]
+        },
+        {
+            "name": "人工智能聊天机器人",
+            "role": "项目经理",
+            "time": "2021",
+            "details": [
+                "开发了一个使用NLP技术的聊天机器人来在线帮助客户。"
+            ]
+        }
+    ],
+    "skills": [
+        {
+            "Programming": [
+                "Python",
+                "Java",
+                "JavaScript",
+                "Golang"
+            ]
+        }
+    ],
+    "research_interests": "我对人工智能、机器学习和自然语言处理感兴趣。",
+    "research_experience": [
+        {
+            "title": "研究助理",
+            "supervisor": "史密斯博士",
+            "time": "2022年至2023年",
+            "details": [
+                "专注于改进用于图像识别的神经网络算法。"
+            ]
+        },
+        {
+            "title": "研究生研究员",
+            "supervisor": "凌鹏博士",
+            "time": "2024年至2025年",
+            "details": [
+                "研究了社交媒体数据的情绪分析技术。"
+            ]
+        }
+    ],
+    "publications": [
+        "陈。“神经网络的进步”，人工智能会议论文集，2022年。",
+        "陈。《社交媒体中的情感分析》，自然语言处理研究杂志，2023年。"
+    ],
+    "awards": [
+        "2023年获得麻省理工学院年度研究之星。",
+        "2024年荣获腾讯最佳创新奖。"
+    ]
+}

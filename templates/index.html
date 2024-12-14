@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPT对话和简历展示</title>
+    <style>
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
+        }
+        #left {
+            flex: 1;
+            padding: 20px;
+            border-right: 1px solid #ccc;
+            display: flex;
+            flex-direction: column;
+        }
+        #messages {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        .message {
+            margin: 5px 0;
+        }
+        .gpt { color: blue; }
+        .user { color: green; text-align: right; }
+        #input-container {
+            display: flex;
+        }
+        #user-input {
+            flex: 1;
+            padding: 10px;
+        }
+        #submit-btn {
+            padding: 10px 20px;
+        }
+        #right {
+            width: 550px;
+            padding: 20px;
+            text-align: center;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        #resume {
+            display: none;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div id="left">
+    <h2>GPT对话框</h2>
+    <div id="messages"></div>
+    <div id="input-container">
+        <input type="text" id="user-input" placeholder="输入您的消息..." />
+        <button id="submit-btn" onclick="sendMessage()">发送</button>
+    </div>
+</div>
+
+<div id="right">
+    <h2>简历展示</h2>
+    <iframe id="resume" width="100%" height="500px"></iframe>
+    <iframe id="blank" src="../output/resume.pdf" width="99%" height="600px" style="display:none;"></iframe>
+    <button id="resume-submit" onclick="submitResume()">提交简历</button>
+</div>
+
+<script>
+    function sendMessage() {
+        const userInput = document.getElementById('user-input').value;
+
+        if (!userInput) return;
+
+        // 显示用户消息
+        const messagesDiv = document.getElementById('messages');
+        messagesDiv.innerHTML += `<div class="message user">${userInput}</div>`;
+        document.getElementById('user-input').value = '';
+
+        // 发送用户输入到 Flask 后端
+        fetch('/get_response', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ user_input: userInput })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // 显示GPT的回复
+            const gptResponse = data.response; // 从后端获取的回复
+            messagesDiv.innerHTML += `<div class="message gpt">${gptResponse}</div>`;
+            messagesDiv.scrollTop = messagesDiv.scrollHeight; // 滚动到底部
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+        // 模拟GPT回复
+        // setTimeout(() => {
+        //     const gptResponse = "这是GPT的回复"; // 替换为实际的GPT回复逻辑
+        //     messagesDiv.innerHTML += `<div class="message gpt">${gptResponse}</div>`;
+        //     messagesDiv.scrollTop = messagesDiv.scrollHeight; // 滚动到底部
+        // }, 1000);
+    }
+
+    function submitResume() {
+        // 提交简历按钮的逻辑
+        // alert("");
+        // 可以在这里添加实际提交的逻辑
+    }
+
+    fetch('/check_resume')
+        .then(response => response.json())
+        .then(data => {
+            const resumeIframe = document.getElementById('resume');
+            const blankIframe = document.getElementById('blank');
+
+            if (data.exists) {
+                resumeIframe.src = '../output/resume.pdf';
+                resumeIframe.style.display = 'block';
+            } else {
+                blankIframe.style.display = 'block';
+            }
+        });
+</script>
+
+</body>
+</html>
